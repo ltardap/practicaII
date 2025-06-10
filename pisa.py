@@ -9,6 +9,7 @@ import json
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+
 # --- Carga y combinación de datos ---
 @st.cache_data
 def cargar_datos():
@@ -85,11 +86,14 @@ with tab1:
     # --- Heatmap ---
     st.markdown("### Heatmap: Puntuación media por comunidad autónoma y asignatura")
     df_heat = df_filtrado.groupby('REGION_NOMBRE')[['PV1MATH', 'PV1READ', 'PV1SCIE']].mean()
-    plt.figure(figsize=(10, 6))
-    sns.heatmap(df_heat, annot=True, cmap='coolwarm', fmt=".1f")
-    plt.title('Puntuación media por comunidad autónoma y asignatura (PISA 2022)')
-    plt.tight_layout()
-    st.pyplot(plt)
+
+    # Crear figura y eje
+    fig, ax = plt.subplots(figsize=(10, 6))
+    sns.heatmap(df_heat, annot=True, cmap='coolwarm', fmt=".1f", ax=ax)
+    ax.set_title('Puntuación media por comunidad autónoma y asignatura (PISA 2022)')
+    fig.tight_layout()
+
+    st.pyplot(fig)
 
     # --- Gráficos de barras por asignatura ---
     st.markdown("### Gráficas de barras con la puntuación media por comunidad autónoma y asignatura")
