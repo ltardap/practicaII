@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 # --- Carga y combinación de datos ---
 @st.cache_data
 def cargar_datos():
-    df_estudiantes, _ = pyreadstat.read_sav('C:/Users/laura/Downloads/pisa-2022-esp/PISA2022_Estudiantes_Esp.sav')
-    df_centros, _ = pyreadstat.read_sav('C:/Users/laura/Downloads/pisa-2022-esp/PISA2022_CentrosEducativos_Esp.sav')
+    df_estudiantes, _ = pyreadstat.read_sav('PISA2022_Estudiantes_Esp.sav')
+    df_centros, _ = pyreadstat.read_sav('PISA2022_CentrosEducativos_Esp.sav')
     df = pd.merge(df_estudiantes, df_centros, on='CNTSCHID', how='left')
     columnas_esenciales = ['PV1MATH', 'ESCS', 'ST004D01T']
     df = df.dropna(subset=columnas_esenciales)
