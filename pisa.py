@@ -195,7 +195,7 @@ with tab3:
 
 with tab4:
     st.markdown("""
-    Análisis del impacto del nivel socioeconómico y el bullying en el rendimiento.
+    Análisis del impacto del nivel socioeconómico en el rendimiento.
     """)
     # --- Impacto del nivel socioeconómico ---
     st.header("Impacto del nivel socioeconómico (ESCS)")
